@@ -2,11 +2,11 @@ import 'dart:html';
 import 'package:domino/html_view.dart';
 import 'package:domino/node_helpers.dart';
 
-void main() {
+class ExampleComp implements Component {
   bool safe = false;
-  registerHtmlView(
-      querySelector('#output'),
-      div(children: [
+
+  @override
+  dynamic build(BuildContext context) => div(children: [
         safe
             ? div()
             : div(classes: ['not-safe'], attrs: {'data-not-safe': 'true'}),
@@ -17,5 +17,9 @@ void main() {
         }),
       ], attrs: {
         'id': 'main'
-      }));
+      });
+}
+
+void main() {
+  registerHtmlView(querySelector('#output'), new ExampleComp());
 }
