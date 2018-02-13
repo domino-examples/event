@@ -9,6 +9,7 @@ class ExampleComp implements Component {
   dynamic build(BuildContext context) => div(children: [
         safe
             ? div()
+            // div(classes: [], attrs: {'data-not-safe': 'false'})
             : div(classes: ['not-safe'], attrs: {'data-not-safe': 'true'}),
         button(text: 'Toggle safety', events: {
           'click': (_) {
